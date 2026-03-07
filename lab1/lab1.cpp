@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <iomanip>
 #include <omp.h>
 
 std::vector<double> readMatrix(const std::string& filename, int& n) {
@@ -33,7 +34,7 @@ std::vector<double> readMatrix(const std::string& filename, int& n) {
     return mat;
 }
 
-void writeResultAndInfo(const std::string& filename, const std::vector<double>& mat, int n, double elapsed) {
+void writeMatrixToFile(const std::string& filename, const std::vector<double>& mat, int n) {
     std::ofstream file(filename);
     if (!file.is_open()) {
         std::ofstream log("log.txt");
@@ -41,13 +42,23 @@ void writeResultAndInfo(const std::string& filename, const std::vector<double>& 
         exit(1);
     }
 
-    file << std::fixed; 
-
+    file << std::fixed;
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j)
             file << mat[i * n + j] << " ";
         file << std::endl;
     }
+    file.close();
+}
+
+void writeInfoToFile(const std::string& filename, int n, double elapsed) {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        std::ofstream log("log.txt");
+        log << "Не удалось создать файл: " << filename << std::endl;
+        exit(1);
+    }
+
     file << "Размер матрицы: " << n << "x" << n << std::endl;
     file << "Объем задачи (элементов результата): " << n * n << std::endl;
     file << "Время выполнения: " << elapsed << " секунд" << std::endl;
@@ -58,6 +69,7 @@ int main() {
     std::string fileA = "mat1.txt";
     std::string fileB = "mat2.txt";
     std::string outFile = "CPPresult.txt";
+    std::string infoFile = "info.txt";
 
     int nA, nB;
     std::vector<double> A = readMatrix(fileA, nA);
@@ -74,7 +86,7 @@ int main() {
 
     double start = omp_get_wtime();
 
-#pragma omp parallel for
+    #pragma omp parallel for
     for (int i = 0; i < n; ++i) {
         for (int k = 0; k < n; ++k) {
             double aik = A[i * n + k];
@@ -87,7 +99,8 @@ int main() {
     double end = omp_get_wtime();
     double elapsed = end - start;
 
-    writeResultAndInfo(outFile, C, n, elapsed);
+    writeMatrixToFile(outFile, C, n);
+    writeInfoToFile(infoFile, n, elapsed);
 
     return 0;
 }

@@ -3,7 +3,7 @@ import subprocess
 import os
 import sys
 
-SIZE = 1000      # Размер квадратной матрицы
+SIZE = 2000     # Размер квадратной матрицы
 MATRIX_A = "mat1.txt"
 MATRIX_B = "mat2.txt"
 CPP_RESULT = "CPPresult.txt"
