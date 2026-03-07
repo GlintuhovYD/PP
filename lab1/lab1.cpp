@@ -40,6 +40,9 @@ void writeResultAndInfo(const std::string& filename, const std::vector<double>& 
         log << "Не удалось создать файл: " << filename << std::endl;
         exit(1);
     }
+
+    file << std::fixed; 
+
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j)
             file << mat[i * n + j] << " ";
