@@ -3,7 +3,8 @@ import subprocess
 import os
 import sys
 
-SIZE = 2000     # Размер квадратной матрицы
+SIZE = 1500     # Размер квадратной матрицы
+THREADS = 1     #Кол-во потоков
 MATRIX_A = "mat1.txt"
 MATRIX_B = "mat2.txt"
 CPP_RESULT = "CPPresult.txt"
@@ -13,20 +14,20 @@ PY_SCRIPT = "lab1.py"
 
 def generate_matrices(n):
     """Генерирует две случайные матрицы и сохраняет в файлы"""
-    A = np.random.randint(0, 100, size=(SIZE, SIZE))
-    B = np.random.randint(0, 100, size=(SIZE, SIZE))
+    A = np.random.randint(0, 100, size=(n, n))
+    B = np.random.randint(0, 100, size=(n, n))
     np.savetxt(MATRIX_A, A, fmt='%.0f')
     np.savetxt(MATRIX_B, B, fmt='%.0f')
     print(f"Сгенерированы матрицы {n}x{n} в {MATRIX_A} и {MATRIX_B}")
     return A, B
 
-def run_cpp():
+def run_cpp(THREADS):
     """Запускает скомпилированную C++ программу"""
     if not os.path.exists(CPP_EXE):
         print(f"Ошибка: не найден {CPP_EXE}")
         return False
     try:
-        subprocess.run([CPP_EXE], check=True, capture_output=True, text=True)
+        subprocess.run([CPP_EXE, str(THREADS)], check=True, capture_output=True, text=True)
         print("C++ программа завершена.")
         return True
     except subprocess.CalledProcessError as e:
@@ -87,7 +88,7 @@ def compare():
 def main():
     generate_matrices(SIZE)
 
-    if not run_cpp():
+    if not run_cpp(THREADS):
         return
 
     if not run_python():

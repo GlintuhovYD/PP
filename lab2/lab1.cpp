@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iomanip>
 #include <omp.h>
+#include <cstdlib>
 
 std::vector<double> readMatrix(const std::string& filename, int& n) {
     std::ifstream file(filename);
@@ -58,14 +59,20 @@ void writeInfoToFile(const std::string& filename, int n, double elapsed) {
         log << "Не удалось создать файл: " << filename << std::endl;
         exit(1);
     }
-
+    file << "Количество потоков: " << omp_get_max_threads() << std::endl;
     file << "Размер матрицы: " << n << "x" << n << std::endl;
     file << "Объем задачи (элементов результата): " << n * n << std::endl;
     file << "Время выполнения: " << elapsed << " секунд" << std::endl;
     file.close();
 }
 
-int main() {
+int main(int argc, char* argv[]) {
+    int threads = 1;
+    if (argc > 1) {
+        threads = std::atoi(argv[1]);
+        if (threads < 1) threads = 1;
+    }
+
     std::string fileA = "mat1.txt";
     std::string fileB = "mat2.txt";
     std::string outFile = "CPPresult.txt";
@@ -84,6 +91,7 @@ int main() {
 
     std::vector<double> C(n * n, 0.0);
 
+    omp_set_num_threads(threads);
     double start = omp_get_wtime();
 
     #pragma omp parallel for
