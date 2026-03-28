@@ -5,6 +5,7 @@
             "label": "C/C++: cl.exe build active file",
             "command": "cl.exe",
             "args": [
+                "/openmp",
                 "/Zi",
                 "/EHsc",
                 "/nologo",

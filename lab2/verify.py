@@ -3,8 +3,8 @@ import subprocess
 import os
 import sys
 
-SIZE = 1500     # Размер квадратной матрицы
-THREADS = 1     #Кол-во потоков
+SIZE = 2000     # Размер квадратной матрицы
+THREADS = 8    #Кол-во потоков
 MATRIX_A = "mat1.txt"
 MATRIX_B = "mat2.txt"
 CPP_RESULT = "CPPresult.txt"
