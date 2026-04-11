@@ -3,8 +3,8 @@ import subprocess
 import os
 import sys
 
-SIZE = 1000     # Размер квадратной матрицы
-THREADS = 4    # Кол-во потоков
+SIZE = 500     # Размер квадратной матрицы
+THREADS = 2    # Кол-во потоков
 MATRIX_A = "mat1.txt"
 MATRIX_B = "mat2.txt"
 CPP_RESULT = "CPPresult.txt"
@@ -21,20 +21,25 @@ def generate_matrices(n):
     print(f"Сгенерированы матрицы {n}x{n} в {MATRIX_A} и {MATRIX_B}")
     return A, B
 
-def run_cpp(THREADS):
-    """Запускает скомпилированную C++ программу"""
+def run_cpp(num_procs):
+    """Запускает MPI-программу через mpiexec"""
     if not os.path.exists(CPP_EXE):
         print(f"Ошибка: не найден {CPP_EXE}")
         return False
     try:
-        subprocess.run([CPP_EXE, str(THREADS)], check=True, capture_output=True, text=True)
+        subprocess.run(
+            ["mpiexec", "-n", str(num_procs), CPP_EXE],
+            check=True,
+            capture_output=True,
+            text=True
+        )
         print("C++ программа завершена.")
         return True
     except subprocess.CalledProcessError as e:
         print("Ошибка при запуске C++ программы:")
         print(e.stderr)
         return False
-
+    
 def run_python():
     """Запускает Python-скрипт умножения"""
     if not os.path.exists(PY_SCRIPT):
