@@ -102,6 +102,4 @@
 
 ![График](lab5/images/diag.png)
 
-![Скриншот во время работы](lab5/images/workspace.jpg)
-
 </details>
