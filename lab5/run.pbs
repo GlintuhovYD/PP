@@ -1,0 +1,11 @@
+#!/bin/bash
+#SBATCH --job-name=mpi_tests
+#SBATCH --time=00:30:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=8
+#SBATCH --partition=batch
+#SBATCH --output=job.out
+#SBATCH --error=job.err
+
+module load intel/mpi4
+python3 verify.py

@@ -1,0 +1,142 @@
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+Результат сохранён в PYresult.txt
+
+=== Size 250 Processes 1 ===
+Generated 250x250 matrices
+MPI finished with 1 procs
+Python finished
+Match
+
+=== Size 250 Processes 2 ===
+Generated 250x250 matrices
+MPI finished with 2 procs
+Python finished
+Match
+
+=== Size 250 Processes 4 ===
+Generated 250x250 matrices
+MPI finished with 4 procs
+Python finished
+Match
+
+=== Size 250 Processes 8 ===
+Generated 250x250 matrices
+MPI finished with 8 procs
+Python finished
+Match
+
+=== Size 500 Processes 1 ===
+Generated 500x500 matrices
+MPI finished with 1 procs
+Python finished
+Match
+
+=== Size 500 Processes 2 ===
+Generated 500x500 matrices
+MPI finished with 2 procs
+Python finished
+Match
+
+=== Size 500 Processes 4 ===
+Generated 500x500 matrices
+MPI finished with 4 procs
+Python finished
+Match
+
+=== Size 500 Processes 8 ===
+Generated 500x500 matrices
+MPI finished with 8 procs
+Python finished
+Match
+
+=== Size 1000 Processes 1 ===
+Generated 1000x1000 matrices
+MPI finished with 1 procs
+Python finished
+Match
+
+=== Size 1000 Processes 2 ===
+Generated 1000x1000 matrices
+MPI finished with 2 procs
+Python finished
+Match
+
+=== Size 1000 Processes 4 ===
+Generated 1000x1000 matrices
+MPI finished with 4 procs
+Python finished
+Match
+
+=== Size 1000 Processes 8 ===
+Generated 1000x1000 matrices
+MPI finished with 8 procs
+Python finished
+Match
+
+=== Size 1500 Processes 1 ===
+Generated 1500x1500 matrices
+MPI finished with 1 procs
+Python finished
+Match
+
+=== Size 1500 Processes 2 ===
+Generated 1500x1500 matrices
+MPI finished with 2 procs
+Python finished
+Match
+
+=== Size 1500 Processes 4 ===
+Generated 1500x1500 matrices
+MPI finished with 4 procs
+Python finished
+Match
+
+=== Size 1500 Processes 8 ===
+Generated 1500x1500 matrices
+MPI finished with 8 procs
+Python finished
+Match
+
+=== Size 2000 Processes 1 ===
+Generated 2000x2000 matrices
+MPI finished with 1 procs
+Python finished
+Match
+
+=== Size 2000 Processes 2 ===
+Generated 2000x2000 matrices
+MPI finished with 2 procs
+Python finished
+Match
+
+=== Size 2000 Processes 4 ===
+Generated 2000x2000 matrices
+MPI finished with 4 procs
+Python finished
+Match
+
+=== Size 2000 Processes 8 ===
+Generated 2000x2000 matrices
+MPI finished with 8 procs
+Python finished
+Match
+
+All done. Results in summary.txt
